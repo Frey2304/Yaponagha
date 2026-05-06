@@ -5,194 +5,318 @@
 
     <style>
         body{
-            background:
-            radial-gradient(circle at top, #222 0%, black 70%);
+            margin:0;
+            background:#030303;
             color:white;
             font-family:Arial;
-            margin:0;
         }
 
-        .navbar{
-            background:#111;
-            padding:20px;
+        .hero{
+            height:100vh;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .hero video{
+            position:absolute;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            z-index:1;
+        }
+
+        .overlay{
+            position:absolute;
+            width:100%;
+            height:100%;
+            background:linear-gradient(to bottom, rgba(0,0,0,0.25), #030303);
+            z-index:2;
+        }
+
+        .hero-content{
+            position:relative;
+            z-index:3;
+            height:100%;
             display:flex;
-            justify-content:space-between;
-            align-items:center;
-            border-bottom:2px solid gold;
+            flex-direction:column;
+            justify-content:center;
+            padding-left:70px;
+            max-width:700px;
         }
 
-        .navbar h2{
+        .hero-content h1{
+            font-size:80px;
             color:gold;
+            margin:0;
+            letter-spacing:4px;
         }
 
-        .navbar a{
+        .hero-content h2{
+            font-size:48px;
+            margin:10px 0;
+        }
+
+        .hero-content p{
+            font-size:20px;
+            line-height:1.6;
+        }
+
+        .boton{
             background:gold;
             color:black;
-            padding:10px 20px;
-            border-radius:10px;
+            padding:15px 30px;
+            border-radius:30px;
             text-decoration:none;
             font-weight:bold;
+            width:max-content;
+            margin-top:20px;
         }
 
-        h1{
+        .seccion{
+            padding:70px;
+        }
+
+        .titulo{
             color:gold;
             text-align:center;
-            font-size:70px;
-            margin-bottom:10px;
+            font-size:42px;
+            margin-bottom:40px;
         }
 
-        .subtitulo{
+        .proceso{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+            gap:25px;
+        }
+
+        .paso, .tech, .card{
+            background:#111;
+            border:1px solid gold;
+            border-radius:18px;
+            padding:25px;
             text-align:center;
-            color:gray;
-            font-size:22px;
-            margin-bottom:40px;
+            transition:0.3s;
+        }
+
+        .paso:hover, .tech:hover, .card:hover{
+            transform:scale(1.03);
+            box-shadow:0 0 25px gold;
+        }
+
+        .numero{
+            color:gold;
+            font-size:38px;
+        }
+
+        .tech-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+            gap:25px;
+        }
+
+        .piloto{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+            align-items:center;
+        }
+
+        .piloto img{
+            width:100%;
+            border-radius:20px;
+            border:1px solid gold;
         }
 
         .contenedor{
             display:flex;
             flex-wrap:wrap;
             justify-content:center;
+            gap:25px;
         }
 
         .card{
-            width:350px;
-            margin:20px;
-            padding:20px;
-            border:2px solid gold;
-            border-radius:20px;
-            background:#111;
-            text-align:center;
-            transition:0.3s;
-        }
-
-        .card:hover{
-            transform:scale(1.03);
-            box-shadow:0 0 30px gold;
-        }
-
-        .badge{
-            background:gold;
-            color:black;
-            display:inline-block;
-            padding:5px 15px;
-            border-radius:20px;
-            font-weight:bold;
+            width:320px;
         }
 
         .card img{
             width:100%;
-            height:250px;
+            height:230px;
             object-fit:cover;
             border-radius:15px;
-            margin-top:10px;
+        }
+
+        .whatsapp{
+            display:inline-block;
+            background:gold;
+            color:black;
+            padding:10px 20px;
+            border-radius:20px;
+            text-decoration:none;
+            font-weight:bold;
         }
 
         a{
             color:gold;
-            text-decoration:none;
         }
 
-        .nombre{
-            color:gold;
-            font-size:32px;
-        }
+        @media(max-width:800px){
+            .hero-content{
+                padding:25px;
+            }
 
-        .whatsapp{
-            background:gold;
-            color:black;
-            padding:10px 20px;
-            border-radius:10px;
-            display:inline-block;
-            margin-top:10px;
-            font-weight:bold;
-        }
+            .hero-content h1{
+                font-size:48px;
+            }
 
-        .editar{
-            color:lightblue;
-        }
+            .hero-content h2{
+                font-size:32px;
+            }
 
-        .borrar{
-            color:red;
-        }
-
-        footer{
-            text-align:center;
-            color:gray;
-            padding:40px;
-            margin-top:40px;
+            .piloto{
+                grid-template-columns:1fr;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="navbar">
-    <h2>YAPONAGHA</h2>
+<section class="hero">
+    <video autoplay muted loop playsinline>
+        <source src="/static/videos/manada.mp4" type="video/mp4">
+    </video>
 
-    <a href="/publicar">
-        + Publicar
-    </a>
-</div>
+    <div class="overlay"></div>
 
-<h1>YAPONAGHA</h1>
+    <div class="hero-content">
+        <h1>YAPONAGHA</h1>
+        <h2>Criamos leyendas</h2>
 
-<p class="subtitulo">
-    Argentina • Genética de Polo • Alto Rendimiento
-</p>
+        <p>
+            Genética argentina, tecnología aplicada y tradición familiar
+            para formar caballos de polo de élite.
+        </p>
 
-<div class="contenedor">
-
-{% for c in caballos %}
-
-<div class="card">
-
-    <p class="badge">
-        TOP POLO
-    </p>
-
-    <h2>
-        <a class="nombre" href="/caballo/{{ c.nombre }}">
-            {{ c.nombre }}
+        <a class="boton" href="https://wa.me/541100000000" target="_blank">
+            Hablar con asesor privado
         </a>
-    </h2>
+    </div>
+</section>
 
-    <img src="{{ c.imagen }}">
+<section class="seccion">
+    <h2 class="titulo">El camino de un campeón</h2>
 
-    <p>{{ c.descripcion }}</p>
+    <div class="proceso">
+        <div class="paso">
+            <div class="numero">01</div>
+            <h3>Nace la promesa</h3>
+            <p>Selección genética desde el origen.</p>
+        </div>
 
-    <p>Padre: {{ c.padre }}</p>
-    <p>Madre: {{ c.madre }}</p>
+        <div class="paso">
+            <div class="numero">02</div>
+            <h3>Amance</h3>
+            <p>Primer vínculo entre caballo, campo y confianza.</p>
+        </div>
 
-    <a
-        class="whatsapp"
-        href="https://wa.me/541100000000"
-        target="_blank"
-    >
-        WhatsApp
-    </a>
+        <div class="paso">
+            <div class="numero">03</div>
+            <h3>Preparación</h3>
+            <p>Entrenamiento físico, mental y técnico.</p>
+        </div>
 
-    <br><br>
+        <div class="paso">
+            <div class="numero">04</div>
+            <h3>Jugador</h3>
+            <p>El caballo aprende ritmo, contacto y lectura de juego.</p>
+        </div>
 
-    <a href="/editar/{{ c.nombre }}" class="editar">
-        Editar
-    </a>
+        <div class="paso">
+            <div class="numero">05</div>
+            <h3>Élite</h3>
+            <p>Listo para competir al máximo nivel.</p>
+        </div>
+    </div>
+</section>
 
-    <br><br>
+<section class="seccion">
+    <h2 class="titulo">Avance tecnológico</h2>
 
-    <a href="/borrar/{{ c.nombre }}" class="borrar">
-        Borrar
-    </a>
+    <div class="tech-grid">
+        <div class="tech">
+            <h3>Genómica equina</h3>
+            <p>Análisis de sangre, linajes y potencial deportivo.</p>
+        </div>
 
-</div>
+        <div class="tech">
+            <h3>Biometría</h3>
+            <p>Seguimiento de desarrollo, salud y rendimiento.</p>
+        </div>
 
-{% endfor %}
+        <div class="tech">
+            <h3>IA aplicada</h3>
+            <p>Datos para mejorar selección, entrenamiento y proyección.</p>
+        </div>
 
-</div>
+        <div class="tech">
+            <h3>Performance</h3>
+            <p>Caballos preparados como atletas de alto rendimiento.</p>
+        </div>
+    </div>
+</section>
 
-<footer>
-    Yaponagha © 2026<br>
-    Caballos de polo de élite • Genética argentina • Alto rendimiento
-</footer>
+<section class="seccion piloto">
+    <div>
+        <h2 style="color:gold; font-size:42px;">El piloto</h2>
+        <h3 style="font-size:34px;">Ignacio Frey</h3>
+
+        <p style="font-size:18px; line-height:1.6;">
+            Toda una vida dedicada al caballo, al campo y al polo.
+            Su experiencia guía el proceso de formación, desde el potrillo
+            hasta el jugador de élite.
+        </p>
+
+        <p style="color:gold;">
+            “No buscamos solo ganar partidos. Buscamos crear legado.”
+        </p>
+    </div>
+
+    <img src="/static/uploads/piloto.jpg">
+</section>
+
+<section class="seccion">
+    <h2 class="titulo">Caballos destacados</h2>
+
+    <div class="contenedor">
+        {% for c in caballos %}
+        <div class="card">
+            <img src="{{ c.imagen }}">
+
+            <h2 style="color:gold;">
+                <a href="/caballo/{{ c.nombre }}">
+                    {{ c.nombre }}
+                </a>
+            </h2>
+
+            <p>{{ c.descripcion }}</p>
+
+            <p>Padre: {{ c.padre }}</p>
+            <p>Madre: {{ c.madre }}</p>
+
+            <a class="whatsapp" href="https://wa.me/541100000000" target="_blank">
+                WhatsApp
+            </a>
+
+            {% if admin %}
+                <br><br>
+                <a href="/editar/{{ c.nombre }}">Editar</a>
+                <br><br>
+                <a href="/borrar/{{ c.nombre }}" style="color:red;">Borrar</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
 </body>
 </html>

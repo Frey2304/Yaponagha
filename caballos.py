@@ -10,7 +10,7 @@ class Caballo:
         self.padre = "Padre Elite"
         self.madre = "Madre Campeona"
         self.criador = "Criador Yaponagha"
-        self.contacto = "WhatsApp: +54 11 0000 0000"
+        self.contacto = "WhatsApp: +54 11 3512047142"
         self.nivel = round(random.uniform(7, 10), 2)
 
 
