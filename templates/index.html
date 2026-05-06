@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yaponagha</title>
+
+    <style>
+        body{
+            background:
+            radial-gradient(circle at top, #222 0%, black 70%);
+            color:white;
+            font-family:Arial;
+            margin:0;
+        }
+
+        .navbar{
+            background:#111;
+            padding:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            border-bottom:2px solid gold;
+        }
+
+        .navbar h2{
+            color:gold;
+        }
+
+        .navbar a{
+            background:gold;
+            color:black;
+            padding:10px 20px;
+            border-radius:10px;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        h1{
+            color:gold;
+            text-align:center;
+            font-size:70px;
+            margin-bottom:10px;
+        }
+
+        .subtitulo{
+            text-align:center;
+            color:gray;
+            font-size:22px;
+            margin-bottom:40px;
+        }
+
+        .contenedor{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+
+        .card{
+            width:350px;
+            margin:20px;
+            padding:20px;
+            border:2px solid gold;
+            border-radius:20px;
+            background:#111;
+            text-align:center;
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:scale(1.03);
+            box-shadow:0 0 30px gold;
+        }
+
+        .badge{
+            background:gold;
+            color:black;
+            display:inline-block;
+            padding:5px 15px;
+            border-radius:20px;
+            font-weight:bold;
+        }
+
+        .card img{
+            width:100%;
+            height:250px;
+            object-fit:cover;
+            border-radius:15px;
+            margin-top:10px;
+        }
+
+        a{
+            color:gold;
+            text-decoration:none;
+        }
+
+        .nombre{
+            color:gold;
+            font-size:32px;
+        }
+
+        .whatsapp{
+            background:gold;
+            color:black;
+            padding:10px 20px;
+            border-radius:10px;
+            display:inline-block;
+            margin-top:10px;
+            font-weight:bold;
+        }
+
+        .editar{
+            color:lightblue;
+        }
+
+        .borrar{
+            color:red;
+        }
+
+        footer{
+            text-align:center;
+            color:gray;
+            padding:40px;
+            margin-top:40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>YAPONAGHA</h2>
+
+    <a href="/publicar">
+        + Publicar
+    </a>
+</div>
+
+<h1>YAPONAGHA</h1>
+
+<p class="subtitulo">
+    Argentina • Genética de Polo • Alto Rendimiento
+</p>
+
+<div class="contenedor">
+
+{% for c in caballos %}
+
+<div class="card">
+
+    <p class="badge">
+        TOP POLO
+    </p>
+
+    <h2>
+        <a class="nombre" href="/caballo/{{ c.nombre }}">
+            {{ c.nombre }}
+        </a>
+    </h2>
+
+    <img src="{{ c.imagen }}">
+
+    <p>{{ c.descripcion }}</p>
+
+    <p>Padre: {{ c.padre }}</p>
+    <p>Madre: {{ c.madre }}</p>
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/541100000000"
+        target="_blank"
+    >
+        WhatsApp
+    </a>
+
+    <br><br>
+
+    <a href="/editar/{{ c.nombre }}" class="editar">
+        Editar
+    </a>
+
+    <br><br>
+
+    <a href="/borrar/{{ c.nombre }}" class="borrar">
+        Borrar
+    </a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<footer>
+    Yaponagha © 2026<br>
+    Caballos de polo de élite • Genética argentina • Alto rendimiento
+</footer>
+
+</body>
+</html>

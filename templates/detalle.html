@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ caballo.nombre }}</title>
+</head>
+
+<body style="background:black; color:white; font-family:Arial;">
+
+<center>
+
+<h1 style="color:gold;">
+    {{ caballo.nombre }}
+</h1>
+
+<img src="{{ caballo.imagen }}" width="500">
+
+<p>{{ caballo.descripcion }}</p>
+
+<p>Padre: {{ caballo.padre }}</p>
+<p>Madre: {{ caballo.madre }}</p>
+<p>Criador: {{ caballo.criador }}</p>
+
+<a href="/">
+    Volver
+</a>
+
+</center>
+
+</body>
+</html>

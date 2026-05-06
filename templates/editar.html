@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Caballo</title>
+
+    <style>
+
+        body{
+            background:black;
+            color:white;
+            font-family:Arial;
+            text-align:center;
+        }
+
+        h1{
+            color:gold;
+            font-size:50px;
+        }
+
+        form{
+            width:500px;
+            margin:auto;
+            background:#111;
+            padding:30px;
+            border-radius:20px;
+            border:2px solid gold;
+        }
+
+        input, textarea{
+            width:90%;
+            padding:15px;
+            margin:10px;
+            border:none;
+            border-radius:10px;
+            font-size:16px;
+        }
+
+        button{
+            background:gold;
+            color:black;
+            padding:15px 30px;
+            border:none;
+            border-radius:10px;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        img{
+            width:100%;
+            border-radius:20px;
+            margin:20px 0;
+        }
+
+        a{
+            color:gold;
+            text-decoration:none;
+            font-size:20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Editar Caballo</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <input
+        name="nombre"
+        value="{{ caballo.nombre }}"
+    >
+
+    <textarea
+        name="descripcion"
+        rows="5"
+    >{{ caballo.descripcion }}</textarea>
+
+    <img src="{{ caballo.imagen }}">
+
+    <input
+        type="file"
+        name="imagen"
+    >
+
+    <br><br>
+
+    <button type="submit">
+        Guardar cambios
+    </button>
+
+</form>
+
+<br>
+
+<a href="/">Volver</a>
+
+</body>
+</html>
