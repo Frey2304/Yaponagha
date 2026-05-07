@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Yaponagha</title>
 
     <style>
+
         body{
             margin:0;
-            background:#030303;
+            background:#050505;
             color:white;
             font-family:Arial;
+            overflow-x:hidden;
         }
 
         .hero{
-            height:100vh;
             position:relative;
+            height:100vh;
             overflow:hidden;
         }
 
         .hero video{
             position:absolute;
+            top:0;
+            left:0;
             width:100%;
             height:100%;
             object-fit:cover;
@@ -29,7 +34,12 @@
             position:absolute;
             width:100%;
             height:100%;
-            background:linear-gradient(to bottom, rgba(0,0,0,0.25), #030303);
+            background:linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.2),
+                rgba(0,0,0,0.8),
+                #050505
+            );
             z-index:2;
         }
 
@@ -40,283 +50,463 @@
             display:flex;
             flex-direction:column;
             justify-content:center;
-            padding-left:70px;
+            padding-left:80px;
             max-width:700px;
         }
 
         .hero-content h1{
-            font-size:80px;
+            font-size:95px;
             color:gold;
             margin:0;
-            letter-spacing:4px;
+            letter-spacing:6px;
         }
 
         .hero-content h2{
-            font-size:48px;
+            font-size:55px;
             margin:10px 0;
         }
 
         .hero-content p{
-            font-size:20px;
-            line-height:1.6;
+            font-size:22px;
+            line-height:1.7;
+            color:#ddd;
         }
 
         .boton{
             background:gold;
             color:black;
-            padding:15px 30px;
-            border-radius:30px;
+            padding:18px 35px;
+            border-radius:40px;
             text-decoration:none;
-            font-weight:bold;
             width:max-content;
+            font-weight:bold;
             margin-top:20px;
+            transition:0.3s;
         }
 
-        .seccion{
-            padding:70px;
+        .boton:hover{
+            transform:scale(1.05);
+        }
+
+        .navbar{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            z-index:5;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:25px 50px;
+            box-sizing:border-box;
+        }
+
+        .logo{
+            color:gold;
+            font-size:34px;
+            font-weight:bold;
+            letter-spacing:4px;
+        }
+
+        .nav-links a{
+            color:white;
+            text-decoration:none;
+            margin-left:25px;
+            font-size:18px;
+        }
+
+        .section{
+            padding:90px 70px;
         }
 
         .titulo{
-            color:gold;
             text-align:center;
-            font-size:42px;
-            margin-bottom:40px;
+            color:gold;
+            font-size:52px;
+            margin-bottom:60px;
         }
 
-        .proceso{
+        .timeline{
             display:grid;
-            grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
             gap:25px;
         }
 
-        .paso, .tech, .card{
+        .step{
             background:#111;
             border:1px solid gold;
-            border-radius:18px;
-            padding:25px;
+            border-radius:20px;
+            padding:30px;
             text-align:center;
             transition:0.3s;
         }
 
-        .paso:hover, .tech:hover, .card:hover{
-            transform:scale(1.03);
-            box-shadow:0 0 25px gold;
+        .step:hover{
+            transform:translateY(-8px);
+            box-shadow:0 0 30px gold;
         }
 
         .numero{
             color:gold;
-            font-size:38px;
+            font-size:42px;
+            margin-bottom:10px;
         }
 
         .tech-grid{
             display:grid;
-            grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-            gap:25px;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:30px;
         }
 
-        .piloto{
+        .tech{
+            background:#111;
+            border:1px solid gold;
+            border-radius:20px;
+            padding:30px;
+            transition:0.3s;
+        }
+
+        .tech:hover{
+            transform:scale(1.03);
+            box-shadow:0 0 25px gold;
+        }
+
+        .pilot{
             display:grid;
             grid-template-columns:1fr 1fr;
-            gap:40px;
+            gap:50px;
             align-items:center;
         }
 
-        .piloto img{
+        .pilot img{
             width:100%;
-            border-radius:20px;
-            border:1px solid gold;
+            border-radius:25px;
+            border:2px solid gold;
         }
 
-        .contenedor{
+        .cards{
             display:flex;
             flex-wrap:wrap;
             justify-content:center;
-            gap:25px;
+            gap:30px;
         }
 
         .card{
-            width:320px;
+            width:340px;
+            background:#111;
+            border:1px solid gold;
+            border-radius:20px;
+            padding:20px;
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:scale(1.03);
+            box-shadow:0 0 25px gold;
         }
 
         .card img{
             width:100%;
-            height:230px;
+            height:240px;
             object-fit:cover;
             border-radius:15px;
         }
 
+        .card h2{
+            color:gold;
+        }
+
         .whatsapp{
             display:inline-block;
+            margin-top:15px;
             background:gold;
             color:black;
-            padding:10px 20px;
+            padding:12px 22px;
             border-radius:20px;
             text-decoration:none;
             font-weight:bold;
         }
 
-        a{
-            color:gold;
+        footer{
+            text-align:center;
+            padding:50px;
+            color:#888;
         }
 
-        @media(max-width:800px){
+        @media(max-width:900px){
+
             .hero-content{
-                padding:25px;
+                padding:30px;
             }
 
             .hero-content h1{
-                font-size:48px;
+                font-size:55px;
             }
 
             .hero-content h2{
-                font-size:32px;
+                font-size:34px;
             }
 
-            .piloto{
+            .pilot{
                 grid-template-columns:1fr;
             }
+
+            .navbar{
+                padding:20px;
+            }
+
         }
+
     </style>
 </head>
 
 <body>
 
+<div class="navbar">
+
+    <div class="logo">
+        YAPONAGHA
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Inicio</a>
+
+        {% if admin %}
+            <a href="/publicar">Publicar</a>
+            <a href="/logout">Salir</a>
+        {% else %}
+            <a href="/login">Admin</a>
+        {% endif %}
+    </div>
+
+</div>
+
 <section class="hero">
+
     <video autoplay muted loop playsinline>
-        <source src="/static/videos/manada.mp4" type="video/mp4">
+        <source
+            src="/static/videos/manada.mp4"
+            type="video/mp4"
+        >
     </video>
 
     <div class="overlay"></div>
 
     <div class="hero-content">
+
         <h1>YAPONAGHA</h1>
-        <h2>Criamos leyendas</h2>
+
+        <h2>
+            No criamos caballos.
+            Creamos leyendas.
+        </h2>
 
         <p>
-            Genética argentina, tecnología aplicada y tradición familiar
-            para formar caballos de polo de élite.
+            Genética argentina de élite,
+            tecnología aplicada y tradición familiar
+            para formar caballos de polo de alto rendimiento.
         </p>
 
-        <a class="boton" href="https://wa.me/541100000000" target="_blank">
+        <a
+            class="boton"
+            href="https://wa.me/541100000000"
+            target="_blank"
+        >
             Hablar con asesor privado
         </a>
+
     </div>
+
 </section>
 
-<section class="seccion">
-    <h2 class="titulo">El camino de un campeón</h2>
+<section class="section">
 
-    <div class="proceso">
-        <div class="paso">
+    <h2 class="titulo">
+        El camino de un campeón
+    </h2>
+
+    <div class="timeline">
+
+        <div class="step">
             <div class="numero">01</div>
-            <h3>Nace la promesa</h3>
-            <p>Selección genética desde el origen.</p>
+            <h3>Potrillo</h3>
+            <p>
+                Selección genética desde el nacimiento.
+            </p>
         </div>
 
-        <div class="paso">
+        <div class="step">
             <div class="numero">02</div>
             <h3>Amance</h3>
-            <p>Primer vínculo entre caballo, campo y confianza.</p>
+            <p>
+                Confianza, disciplina y conexión.
+            </p>
         </div>
 
-        <div class="paso">
+        <div class="step">
             <div class="numero">03</div>
             <h3>Preparación</h3>
-            <p>Entrenamiento físico, mental y técnico.</p>
+            <p>
+                Desarrollo físico y mental de alto rendimiento.
+            </p>
         </div>
 
-        <div class="paso">
+        <div class="step">
             <div class="numero">04</div>
             <h3>Jugador</h3>
-            <p>El caballo aprende ritmo, contacto y lectura de juego.</p>
+            <p>
+                Precisión, velocidad y lectura de juego.
+            </p>
         </div>
 
-        <div class="paso">
+        <div class="step">
             <div class="numero">05</div>
             <h3>Élite</h3>
-            <p>Listo para competir al máximo nivel.</p>
+            <p>
+                Preparado para competir al máximo nivel.
+            </p>
         </div>
+
     </div>
+
 </section>
 
-<section class="seccion">
-    <h2 class="titulo">Avance tecnológico</h2>
+<section class="section">
+
+    <h2 class="titulo">
+        Tecnología aplicada
+    </h2>
 
     <div class="tech-grid">
+
         <div class="tech">
-            <h3>Genómica equina</h3>
-            <p>Análisis de sangre, linajes y potencial deportivo.</p>
+            <h3>Genómica Equina</h3>
+            <p>
+                Estudio de sangre, ADN y proyección genética.
+            </p>
         </div>
 
         <div class="tech">
             <h3>Biometría</h3>
-            <p>Seguimiento de desarrollo, salud y rendimiento.</p>
+            <p>
+                Seguimiento físico y evolución atlética.
+            </p>
         </div>
 
         <div class="tech">
-            <h3>IA aplicada</h3>
-            <p>Datos para mejorar selección, entrenamiento y proyección.</p>
+            <h3>IA y Rendimiento</h3>
+            <p>
+                Datos para optimizar selección y entrenamiento.
+            </p>
         </div>
 
         <div class="tech">
-            <h3>Performance</h3>
-            <p>Caballos preparados como atletas de alto rendimiento.</p>
+            <h3>High Performance</h3>
+            <p>
+                Caballos preparados como atletas de élite.
+            </p>
         </div>
+
     </div>
+
 </section>
 
-<section class="seccion piloto">
-    <div>
-        <h2 style="color:gold; font-size:42px;">El piloto</h2>
-        <h3 style="font-size:34px;">Ignacio Frey</h3>
+<section class="section pilot">
 
-        <p style="font-size:18px; line-height:1.6;">
-            Toda una vida dedicada al caballo, al campo y al polo.
-            Su experiencia guía el proceso de formación, desde el potrillo
-            hasta el jugador de élite.
+    <div>
+
+        <h2 style="color:gold; font-size:50px;">
+            El piloto
+        </h2>
+
+        <h3 style="font-size:36px;">
+            Ignacio Frey
+        </h3>
+
+        <p style="font-size:20px; line-height:1.7;">
+            Una vida dedicada al caballo,
+            al campo y al polo argentino.
+
+            Su experiencia guía cada etapa:
+            desde el nacimiento del potrillo
+            hasta la formación del jugador de élite.
         </p>
 
         <p style="color:gold;">
-            “No buscamos solo ganar partidos. Buscamos crear legado.”
+            “No buscamos solo competir.
+            Buscamos crear legado.”
         </p>
+
     </div>
 
     <img src="/static/uploads/piloto.jpg">
+
 </section>
 
-<section class="seccion">
-    <h2 class="titulo">Caballos destacados</h2>
+<section class="section">
 
-    <div class="contenedor">
+    <h2 class="titulo">
+        Caballos destacados
+    </h2>
+
+    <div class="cards">
+
         {% for c in caballos %}
+
         <div class="card">
+
             <img src="{{ c.imagen }}">
 
-            <h2 style="color:gold;">
+            <h2>
                 <a href="/caballo/{{ c.nombre }}">
                     {{ c.nombre }}
                 </a>
             </h2>
 
-            <p>{{ c.descripcion }}</p>
+            <p>
+                {{ c.descripcion }}
+            </p>
 
-            <p>Padre: {{ c.padre }}</p>
-            <p>Madre: {{ c.madre }}</p>
-
-            <a class="whatsapp" href="https://wa.me/541100000000" target="_blank">
+            <a
+                class="whatsapp"
+                href="https://wa.me/541100000000"
+                target="_blank"
+            >
                 WhatsApp
             </a>
 
             {% if admin %}
+
                 <br><br>
-                <a href="/editar/{{ c.nombre }}">Editar</a>
+
+                <a href="/editar/{{ c.nombre }}">
+                    Editar
+                </a>
+
                 <br><br>
-                <a href="/borrar/{{ c.nombre }}" style="color:red;">Borrar</a>
+
+                <a
+                    href="/borrar/{{ c.nombre }}"
+                    style="color:red;"
+                >
+                    Borrar
+                </a>
+
             {% endif %}
+
         </div>
+
         {% endfor %}
+
     </div>
+
 </section>
+
+<footer>
+    Yaponagha © 2026
+    <br><br>
+    Genética argentina • Polo • Alto rendimiento
+</footer>
 
 </body>
 </html>
